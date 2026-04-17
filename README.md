@@ -203,4 +203,4 @@ hng-stage0-todo-card/
 
 - Mobile responsive (320px-1200px)
 
-👤 Author - Kenyai402
+👤 Author : Kenyai402 — GitHub
