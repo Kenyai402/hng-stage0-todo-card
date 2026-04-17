@@ -8,58 +8,157 @@
   </head>
   <body>
     <article data-testid="test-todo-card" role="region">
-      <!-- Header Section -->
-      <div class="card-header">
-        <!-- Title -->
-        <h2 data-testid="test-todo-title">Todo Card Component</h2>
+      <!-- VIEW MODE WRAPPER -->
+      <div class="view-mode">
+        <!-- Header Section -->
+        <div class="card-header">
+          <!-- Title -->
+          <h2 data-testid="test-todo-title">Todo Card Component</h2>
+
+          <!-- Priority badge -->
+          <div>
+            <span
+              data-testid="test-todo-priority-indicator"
+              class="priority-indicator"
+            ></span>
+            <span
+              data-testid="test-todo-priority"
+              class="priority-badge"
+              aria-label="priority-high"
+              >🔴 High</span
+            >
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p data-testid="test-todo-description">
+          Build a todo card component that displays a title and description. The
+          component should be reusable and styled appropriately.
+        </p>
+
+        <!-- Description expand/Collapse Toggle Button -->
+        <button
+          data-testid="test-todo-expand-toggle"
+          aria-label="Toggle description"
+          class="expand-toggle"
+          aria-expanded="false"
+          aria-controls="collapsible-desc"
+        >
+          Show more ▼
+        </button>
+        <div
+          data-testid="test-todo-collapsible-section"
+          id="collapsible-desc"
+          class="collapsible-section"
+          hidden
+        >
+          <p>
+            This is the extended description that provides more details about
+            the task. It can include additional information, steps to complete,
+            or any relevant notes that help clarify the task requirements.
+          </p>
+        </div>
+        <!-- Due date -->
+        <time data-testid="test-todo-due-date" datetime="2026-04-16">
+          📅 Due April 16, 2026
+        </time>
+
+        <!-- Time remaining -->
+        <div
+          data-testid="test-todo-time-remaining"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          ⏰ Due in 6 days
+        </div>
+
+        <!-- Overdue Indicator -->
         <span
-          data-testid="test-todo-priority"
-          class="priority-badge"
-          aria-label="priority-high"
-          >🔴 High</span
+          data-testid="test-todo-overdue-indicator"
+          class="overdue-indicator"
+          hidden
         >
+          ⚠️ Overdue
+        </span>
+        <!-- Status indicator -->
+        <div>
+          <span data-testid="test-todo-status" aria-label="status-in-progress"
+            >🔄 Pending</span
+          >
+        </div>
+        <!-- NEW: Status Control Dropdown -->
+        <div>
+          <select
+            data-testid="test-todo-status-control"
+            aria-label="Change status"
+          >
+            <option value="Pending" selected>🔄 Pending</option>
+            <option value="In Progress">⏳ In Progress</option>
+            <option value="Done">✅ Done</option>
+          </select>
+        </div>
+
+        <!-- Checkbox -->
+        <div>
+          <input
+            data-testid="test-todo-complete-toggle"
+            type="checkbox"
+            id="todo-complete"
+          />
+          <label for="todo-complete">Mark as complete</label>
+        </div>
+
+        <!-- Tags -->
+        <ul data-testid="test-todo-tags" class="tags-list" role="list">
+          <li data-testid="test-todo-tag-work" class="tag">💼 Work</li>
+          <li data-testid="test-todo-tag-urgent" class="tag">🚨 Urgent</li>
+        </ul>
+
+        <!-- Actions -->
+        <div>
+          <button data-testid="test-todo-edit-button" class="btn-edit">
+            ✏️ Edit
+          </button>
+          <button data-testid="test-todo-delete-button" class="btn-delete">
+            🗑️ Delete
+          </button>
+        </div>
       </div>
-      <!-- Description -->
-      <p data-testid="test-todo-description">
-        Build a todo card component that displays a title and description. The
-        component should be reusable and styled appropriately.
-      </p>
 
-      <!-- Due date -->
-      <time data-testid="test-todo-due-date" datetime="2026-04-16">
-         📅 Due April 16, 2026
-      </time>
-
-      <!-- Time remaining -->
-      <div data-testid="test-todo-time-remaining">  ⏰ Due in 6 days</div>
-
-      <!-- Status indicator -->
-      <div>
-        <span data-testid="test-todo-status" aria-label="status-in-progress"
-          >🔄 Pending</span
-        >
-      </div>
-
-      <!-- Checkbox -->
-      <div>
+      <!-- Edit mode -->
+      <div data-testid="test-todo-edit-form" class="edit-form" hidden>
+        <label for="edit-title">Title</label>
         <input
-          data-testid="test-todo-complete-toggle"
-          type="checkbox"
-          id="todo-complete"
+          id="edit-title"
+          data-testid="test-todo-edit-title-input"
+          type="text"
         />
-        <label for="todo-complete">Mark as complete</label>
-      </div>
-
-      <!-- Tags -->
-      <ul data-testid="test-todo-tags" class="tags-list" role="list">
-        <li data-testid="test-todo-tag-work" class="tag">💼 Work</li>
-        <li data-testid="test-todo-tag-urgent"class="tag">🚨 Urgent</li>
-      </ul>
-
-      <!-- Actions -->
-      <div>
-        <button data-testid="test-todo-edit-button"class="btn-edit">✏️ Edit</button>
-        <button data-testid="test-todo-delete-button" class="btn-delete">🗑️ Delete</button>
+        <textarea
+          id="edit-desc"
+          data-testid="test-todo-edit-description-input"
+        ></textarea>
+        <label for="edit-priority">Priority</label>
+        <select
+          data-testid="test-todo-edit-priority-select"
+          aria-label="Select priority"
+        >
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High" selected>High</option>
+        </select>
+        <label for="edit-due-date">Due Date</label>
+        <input
+          id="edit-due-date"
+          data-testid="test-todo-edit-due-date-input"
+          type="date"
+          value="2026-04-16"
+        />
+        <button data-testid="test-todo-save-button" class="btn-save">
+          Save
+        </button>
+        <button data-testid="test-todo-cancel-button" class="btn-cancel">
+          Cancel
+        </button>
       </div>
     </article>
 
