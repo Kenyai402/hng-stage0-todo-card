@@ -143,6 +143,7 @@ An interactive, stateful Todo Card component built for **HNG Internship Stage 1a
 ---
 
 ## 📁 Project Structure
+```
 hng-stage0-todo-card/
 │
 ├── index.html # Main HTML with view/edit modes
@@ -150,7 +151,7 @@ hng-stage0-todo-card/
 ├── script.js # State management & interactivity
 ├── image.png # Preview screenshot
 └── README.md # Documentation
-
+```
 ---
 
 ## 🔧 Setup & Installation
